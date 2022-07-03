@@ -1,6 +1,4 @@
 #! /bin/bash
-#Need xpath
-sudo apt-get install libxml-xpath-perl
 echo ""
 echo "[Waiting for launcher to start]"
 LAUNCHER_READY=
