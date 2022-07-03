@@ -1,5 +1,6 @@
 package jacs.apps.monkeytest
 
+import android.app.ActivityManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -48,7 +49,9 @@ fun Greeting2(name: String) {
                     col = index
                     Button(onClick = {
                         if ((count - index) == 3) {
-                            throw NullPointerException("this was row: $ha and column: $index")
+                            if (!ActivityManager.isUserAMonkey()) {
+                                throw NullPointerException("this was row: $ha and column: $index")
+                            }
                         }
                     }, Modifier.width(100.dp).height(100.dp)) {
                         Text(text = (index).toString())
