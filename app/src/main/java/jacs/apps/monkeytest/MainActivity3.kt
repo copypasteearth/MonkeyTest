@@ -44,7 +44,7 @@ fun Greeting2(name: String) {
     LazyColumn(Modifier.fillMaxHeight().fillMaxWidth()){
         items(20){ ha ->
             row = ha
-            LazyRow(Modifier.height(100.dp).fillMaxWidth()){
+            LazyRow(){
                 items(10){ index ->
                     col = index
                     Button(onClick = {
@@ -55,7 +55,7 @@ fun Greeting2(name: String) {
                                 }
                             }
                         }
-                    }, Modifier.width(100.dp).height(100.dp)) {
+                    }) {
                         Text(text = (index).toString())
                     }
                 }
