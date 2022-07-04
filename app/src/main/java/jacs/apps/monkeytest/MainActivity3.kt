@@ -37,18 +37,18 @@ class MainActivity3 : ComponentActivity() {
 
 @Composable
 fun Greeting2(name: String) {
-    var count = 50
+    var count = 10
     var row = 0
     var col = 0
     Text(text = "Hello $name!")
     LazyColumn(Modifier.fillMaxHeight().fillMaxWidth()){
-        items(50){ ha ->
+        items(20){ ha ->
             row = ha
             LazyRow(Modifier.height(100.dp).fillMaxWidth()){
-                items(50){ index ->
+                items(10){ index ->
                     col = index
                     Button(onClick = {
-                        if (ha == 48) {
+                        if (ha == 18) {
                             if ((count - index) == 2) {
                                 if (ActivityManager.isUserAMonkey()) {
                                     throw NullPointerException("this was row: $ha and column: $index")
