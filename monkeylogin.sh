@@ -125,5 +125,5 @@ do
   sleep 2
 
 done
-adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -v 15000
+adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -v 25000
 
