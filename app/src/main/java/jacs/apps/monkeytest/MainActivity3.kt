@@ -42,17 +42,15 @@ fun Greeting2(name: String) {
     var col = 0
     Text(text = "Hello $name!")
     LazyColumn(Modifier.fillMaxHeight().fillMaxWidth()){
-        items(20){ ha ->
+        items(10){ ha ->
             row = ha
             LazyRow(){
                 items(10){ index ->
                     col = index
                     Button(onClick = {
-                        if (ha == 18) {
+                        if (ha == 9) {
                             if ((count - index) == 2) {
-                                if (ActivityManager.isUserAMonkey()) {
                                     throw NullPointerException("this was row: $ha and column: $index")
-                                }
                             }
                         }
                     }) {
