@@ -37,7 +37,7 @@ class MainActivity3 : ComponentActivity() {
 
 @Composable
 fun Greeting2(name: String) {
-    var count = 10
+    var count = 15
     var row = 0
     var col = 0
     Text(text = "Hello $name!")
@@ -45,7 +45,7 @@ fun Greeting2(name: String) {
         items(10){ ha ->
             row = ha
             LazyRow(){
-                items(10){ index ->
+                items(15){ index ->
                     col = index
                     Button(onClick = {
                         if (ha == 9) {
