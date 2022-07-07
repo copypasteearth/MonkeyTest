@@ -125,5 +125,5 @@ do
   sleep 2
 
 done
-adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -v --pct-syskeys 0 25000
+adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -v --pct-syskeys 0 --throttle 200 25000
 
