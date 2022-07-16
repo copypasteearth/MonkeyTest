@@ -1,4 +1,14 @@
 #! /bin/bash
+#make sure the android device is at the launcher
+sdkmanager --install 'system-images;android-31;default;x86_64'
+echo no | avdmanager create avd --force -n test --abi 'default/x86_64' --package 'system-images;android-31;default;x86_64'
+printf 'hw.cpu.ncore=2' >> /Users/johnrowan/.android/avd/test.avd/config.ini
+emulator -avd test -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim &
+adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done; input keyevent 82'
+adb root
+adb shell settings put global window_animation_scale 0.0
+adb shell settings put global transition_animation_scale 0.0
+adb shell settings put global animator_duration_scale 0.0
 echo ""
 echo "[Waiting for launcher to start]"
 LAUNCHER_READY=
@@ -125,5 +135,6 @@ do
   sleep 2
 
 done
-adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -v --pct-syskeys 0 250
+#remeber to put your seed in after the -s
+adb shell monkey -p ${package} --ignore-security-exceptions --ignore-native-crashes -s 1657113411168 -v 15000
 
