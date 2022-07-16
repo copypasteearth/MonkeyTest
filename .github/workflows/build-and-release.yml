@@ -1,0 +1,27 @@
+name: Build and Release
+'on':
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+jobs:
+  build:
+    name: Upload APK to App Tester
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: Setup JDK
+        uses: actions/setup-java@v2.5.0
+        with:
+          distribution: temurin
+          java-version: '11'
+      - name: build release
+        run: bash ./gradlew assembleDebug
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+        with:
+          appId: '1:381040976409:android:b0ef33a65cfd53958a8088'
+          token: '1//0gMhKE9eX516XCgYIARAAGBASNwF-L9IrMkKn4kwv_xReaikQYJHWO5smvmcIts8LDgF700LkDxQK6z187BIzIC66mAG0DAzy_sE'
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
