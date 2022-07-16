@@ -48,11 +48,7 @@ fun Greeting2(name: String) {
                 items(15){ index ->
                     col = index
                     Button(onClick = {
-                        if (ha == 9) {
-                            if ((count - index) == 2) {
-                                    throw NullPointerException("this was row: $ha and column: $index")
-                            }
-                        }
+
                     }) {
                         Text(text = (index).toString())
                     }
