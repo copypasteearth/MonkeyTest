@@ -7,9 +7,11 @@ on:
     tags:
       - 'v*'
 
+
 jobs:
   test:
     name: Run Unit Tests
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
