@@ -28,6 +28,11 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
       - name: Build bundle
         run: ./gradlew bundleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: bundle
+          path: app/build/outputs/bundle/debug/app-debug.aab
       - name: Upload bundle
         uses: actions/upload-artifact@v1
         with:
