@@ -21,27 +21,18 @@ jobs:
         run: chmod +x gradlew
       - name: Build apk
         run: ./gradlew assembleDebug
-      - name: Upload APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Build bundle
         run: ./gradlew bundleDebug
       - name: Upload bundle
         uses: actions/upload-artifact@v1
         with:
           name: bundle
-          path: app/build/outputs/bundle/debug/app-debug.aab
+          path: app/build/outputs/
   release:
     name: Release Package
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download APK from build
-        uses: actions/download-artifact@v1
-        with:
-          name: apk
       - name: Download Bundle from build
         uses: actions/download-artifact@v1
         with:
@@ -61,6 +52,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "apk/app-debug.apk bundle/app-bundle.aab"
-          asset_name: app-debug.apk
+          asset_path: bundle
+          asset_name: output.zip
           asset_content_type: application/zip
