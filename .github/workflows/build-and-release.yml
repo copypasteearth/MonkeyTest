@@ -54,23 +54,13 @@ jobs:
         with:
           tag_name: ${{ github.run_number }}
           release_name: MonkeyTest ${{ github.run_number }}
-      - name: Upload Release APK
+      - name: Upload Release Package
         id: upload_release_asset
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: apk/app-debug.apk
+          asset_path: "apk/app-debug.apk bundle/app-bundle.aab"
           asset_name: app-debug.apk
-          asset_content_type: application/zip
-      - name: Upload Release Bundle
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: bundle/app-debug.aab
-          asset_name: app-debug.aab
           asset_content_type: application/zip
