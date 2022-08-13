@@ -48,8 +48,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: github.event.inputs.tag
-          name: github.event.inputs.name
+          tag_name: ${{ github.event.inputs.tag }}
+          name: ${{ github.event.inputs.name }}
           files: |
             app/build/outputs/bundle/debug/app-debug.aab
             app/build/outputs/apk/debug/app-debug.apk
