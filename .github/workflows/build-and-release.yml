@@ -39,7 +39,7 @@ jobs:
           name: bundle
           path: app/build/outputs/bundle/debug/app-debug.aab
       - name: Update release
-        uses: johnwbyrd/update-release@v1
+        uses: ColinPitrat/update-release@v1.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: apk/app-debug.apk bundle/app-debug.aab
