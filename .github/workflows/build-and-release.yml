@@ -39,7 +39,10 @@ jobs:
           name: bundle
           path: app/build/outputs/bundle/debug/app-debug.aab
       - name: Update release
-        uses: ColinPitrat/update-release@v1.0.1
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: apk/app-debug.apk bundle/app-debug.aab
+          files: |
+              apk/app-debug.apk
+              bundle/app-bundle.aab
