@@ -32,6 +32,8 @@ jobs:
         run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/app-debug${{ github.event.inputs.tag }}.apk
       - name: Build bundle
         run: ./gradlew bundleDebug
+      - name: Rename bundle
+        run: mv app/build/outputs/bundle/debug/app-debug.aab app/build/outputs/bundle/debug/app-debug${{ github.event.inputs.tag }}.aab
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -40,7 +42,7 @@ jobs:
           generate_release_notes: true
           files: |
             app/build/outputs/apk/debug/app-debug${{ github.event.inputs.tag }}.apk
-            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/bundle/debug/app-debug${{ github.event.inputs.tag }}.aab
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_REPOSITORY: copypasteearth/MonkeyTest
