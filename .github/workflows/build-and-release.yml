@@ -81,7 +81,7 @@ jobs:
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
       - name: get git log
-        run: echo "TAG=$(echo $(git log --pretty=oneline))" >> $GITHUB_ENV
+        run: echo "TAG=$(echo $(git log --since=2.weeks --pretty=format:'%s%n%n%b'))" >> $GITHUB_ENV
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
