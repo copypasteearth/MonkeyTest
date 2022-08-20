@@ -80,12 +80,14 @@ jobs:
         run: ./gradlew assembleStaging
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
+      - name: get git log
+        run: echo "TAG=$(echo $(git log))" >> $GITHUB_ENV
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
           gitReleaseNotes: true
-          releaseNotes: ${{ echo git log -1 --pretty=format:%s }}
+          releaseNotes: ${{ env.TAG }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
