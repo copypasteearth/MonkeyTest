@@ -3,18 +3,24 @@ name: Make Release
 on:
   workflow_dispatch:
     inputs:
+      env:
+        description: 'Select the Environment, Production(will make a release candidate and Github Release with tag and send to app center, Staging(will just build a staging apk and send to app center)'
+        type: choice
+        required: true
+        options:
+            - Production
+            - Staging
       tag:
-        description: tag for release
+        description: tag for release or version for staging
         required: true
       name:
-        description: name for release
+        description: name for release or name for staging
         required: true
 
 jobs:
   build:
-
+    if: github.event.inputs.env == 'Production'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: set up JDK 11
@@ -56,3 +62,31 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_REPOSITORY: copypasteearth/MonkeyTest
+  buildStaging:
+    if: github.event.inputs.env == 'Staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build apk
+        run: ./gradlew assembleStaging
+      - name: Rename Apk
+        run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
+      - name: upload artefact to App Center
+        uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: copypasteearth/MonkeyTest
+          gitReleaseNotes: true
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Testers;Collaborators
+          file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
+          notifyTesters: true
+          debug: false
