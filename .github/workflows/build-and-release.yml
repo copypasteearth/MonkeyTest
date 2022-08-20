@@ -86,7 +86,7 @@ jobs:
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
           IFS=$'\n' 
-          echo "read -rd '' -a commits <<<"$LASTMERGES"" >> $GITHUB_ENV
+          echo "commits=($LASTMERGES)" >> $GITHUB_ENV
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
