@@ -34,6 +34,15 @@ jobs:
         run: ./gradlew bundleDebug
       - name: Rename bundle
         run: mv app/build/outputs/bundle/debug/app-debug.aab app/build/outputs/bundle/debug/app-debug${{ github.event.inputs.tag }}.aab
+      - name: upload artefact to App Center
+        uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: copypasteearth/MonkeyTest
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Testers;Collaborators
+          file: app/build/outputs/apk/debug/app-debug${{ github.event.inputs.tag }}.apk
+          notifyTesters: true
+          debug: false
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
