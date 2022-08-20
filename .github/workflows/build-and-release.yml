@@ -84,7 +84,7 @@ jobs:
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
       - name: get git log
         run: |
-          TAG=$(cat << EOF $(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b') EOF)
+          TAG=$(echo $(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b'))
           TAG="${TAG//'%'/'%25'}"
           TAG="${TAG//$'\n'/'%0A'}"
           TAG="${TAG//$'\r'/'%0D'}"
