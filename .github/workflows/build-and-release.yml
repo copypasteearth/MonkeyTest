@@ -86,6 +86,7 @@ jobs:
         id: getcommits
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
+          echo $LASTMERGES
           LASTMERGES=$(cat << EOF
           ${LASTMERGES}
           EOF
