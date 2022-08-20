@@ -81,12 +81,10 @@ jobs:
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
       - name: upload artefact to App Center
-        uses: wzieba/AppCenter-Github-Action@v1
+        uses: wzieba/App-Center-action@v1.0.0
         with:
           appName: copypasteearth/MonkeyTest
-          gitReleaseNotes: true
+          releaseNotes: true
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
-          notifyTesters: true
-          debug: false
