@@ -81,14 +81,20 @@ jobs:
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
       - name: get git log
-        run: echo "TAG=$(echo $(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b'))" >> $GITHUB_ENV
+        run: |
+          TAG=$(echo $(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b'))
+          TAG="${TAG//'%'/'%25'}"
+          TAG="${TAG//$'\n'/'%0A'}"
+          TAG="${TAG//$'\r'/'%0D'}"
+          echo "::set-output name=content::$TAG"
+        id: gitlog
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
           gitReleaseNotes: true
           releaseNotes: |
-            "${{ env.TAG }}"
+            ${{ steps.gitlog.outputs.content }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
