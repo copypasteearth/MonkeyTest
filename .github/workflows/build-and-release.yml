@@ -86,13 +86,13 @@ jobs:
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
           IFS=$'\n' 
-          echo "commits=toJson(($LASTMERGES))" >> $GITHUB_ENV
+          echo "commits=toJSON(($LASTMERGES))" >> $GITHUB_ENV
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
           releaseNotes: |+
-            ${{ fromJson(env.commits) }}
+            ${{ fromJSON(env.commits) }}
 
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
