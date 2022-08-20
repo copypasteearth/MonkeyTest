@@ -39,7 +39,6 @@ jobs:
         with:
           appName: copypasteearth/MonkeyTest
           gitReleaseNotes: true
-          releaseNotes: true
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/debug/app-debug${{ github.event.inputs.tag }}.apk
