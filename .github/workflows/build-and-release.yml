@@ -93,7 +93,7 @@ jobs:
         with:
           appName: copypasteearth/MonkeyTest
           gitReleaseNotes: true
-          releaseNotes: |
+          releaseNotes: |+
             ${{ steps.gitlog.outputs.content }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
