@@ -86,8 +86,7 @@ jobs:
         id: getcommits
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
-          commits=toJSON($LASTMERGES)
-          echo "::set-output name=content::$commits"
+          echo "::set-output name=content::$LASTMERGES"
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
