@@ -87,7 +87,7 @@ jobs:
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
           LASTMERGES=$(cat << EOF
-          ${LASTMERGES)
+          ${LASTMERGES}
           EOF
           )
           LASTMERGES="${LASTMERGES//'%'/'%25'}"
