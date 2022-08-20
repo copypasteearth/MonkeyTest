@@ -87,7 +87,8 @@ jobs:
         with:
           appName: copypasteearth/MonkeyTest
           gitReleaseNotes: true
-          releaseNotes: ${{ env.TAG }}
+          releaseNotes: |+
+            ${{ env.TAG }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
