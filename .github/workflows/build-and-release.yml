@@ -86,6 +86,13 @@ jobs:
         id: getcommits
         run: |
           LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
+          LASTMERGES=$(cat << EOF
+          ${LASTMERGES)
+          EOF
+          )
+          LASTMERGES="${LASTMERGES//'%'/'%25'}"
+          LASTMERGES="${LASTMERGES//$'\n'/'%0A'}"
+          LASTMERGES="${LASTMERGES//$'\r'/'%0D'}"
           echo "::set-output name=content::$LASTMERGES"
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
