@@ -83,24 +83,17 @@ jobs:
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
       - name: get commits
-        id: getcommits
-        run: |
-          LASTMERGES=$(git --no-pager log --since=2.weeks --pretty=format:'%s%n%n%b')
-          echo "${LASTMERGES}"
-          LASTMERGES=$(cat << EOF
-          "${LASTMERGES}"
-          EOF
-          )
-          LASTMERGES="${LASTMERGES//'%'/'%25'}"
-          LASTMERGES="${LASTMERGES//$'\n'/'%0A'}"
-          LASTMERGES="${LASTMERGES//$'\r'/'%0D'}"
-          echo "::set-output name=content::$LASTMERGES"
+        id: git-log
+        uses: jarrodparkes/git-log-action@1.0.0
+        with:
+          start: main
+          end: 1.0.8
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
           releaseNotes: |+
-            ${{ steps.getcommits.outputs.content }}
+            ${{ env.LOG }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
