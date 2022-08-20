@@ -85,6 +85,8 @@ jobs:
       - name: get commits
         id: git-log
         uses: JantHsueh/get-git-log-action@master
+        with:
+          tag: 1.0.1
       - name: print commits
         run: echo ${{ steps.git-log.outputs.log }}
       - name: upload artefact to App Center
