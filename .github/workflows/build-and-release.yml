@@ -85,17 +85,15 @@ jobs:
       - uses: johnyherangi/create-release-notes@main
         id: create-release-notes
         with:
-          format: '{{message}}'
+          format: '{{message}}\n\n'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: print release notes
-        run: echo "${{ steps.create-release-notes.outputs.release-notes }}"
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
-          releaseNotes: |+
-            "${{ steps.create-release-notes.outputs.release-notes }}"
+          releaseNotes: |
+            ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
