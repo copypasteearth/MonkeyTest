@@ -82,20 +82,18 @@ jobs:
         run: ./gradlew assembleStaging
       - name: Rename Apk
         run: mv app/build/outputs/apk/staging/app-staging-unsigned.apk app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
-      - name: get commits
-        id: git-log
-        run: |
-          log=$(git log --pretty=format:'- %cd %an \n  %s\n \n' --date=format:'%Y-%m-%d %H:%M:%S')
-          echo $log
-          echo ::set-output name=log::$log
-      - name: print commits
-        run: echo ${{ steps.git-log.outputs.log }}
+      - uses: johnyherangi/create-release-notes@main
+        id: create-release-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: print release notes
+        run: echo ${{ steps.create-release-notes.outputs.release-notes }}
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
           releaseNotes: |
-            ${{ steps.git-log.outputs.log }}
+            ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Testers;Collaborators
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
