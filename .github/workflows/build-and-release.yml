@@ -85,7 +85,7 @@ jobs:
       - uses: johnyherangi/create-release-notes@main
         id: create-release-notes
         with:
-          format: '{{message}}\n\n'
+          format: '• {{message}}"\n"'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload artefact to App Center
