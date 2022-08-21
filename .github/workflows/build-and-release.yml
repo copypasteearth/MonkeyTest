@@ -85,7 +85,7 @@ jobs:
       - uses: johnyherangi/create-release-notes@main
         id: create-release-notes
         with:
-          format: '-@{{author}} : {{message}}'
+          format: '{{message}}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: print release notes
