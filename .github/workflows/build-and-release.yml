@@ -10,6 +10,14 @@ on:
         options:
             - Production
             - Staging
+      notify:
+        description: 'Who to notify (Collaborators,Testers, or Both)'
+        type: choice
+        required: true
+        options:
+          - Testers;Collaborators
+          - Testers
+          - Collaborators
       tag:
         description: tag for release or version for staging
         required: true
@@ -95,7 +103,7 @@ jobs:
           releaseNotes: |
             ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Testers;Collaborators
+          group: github.event.inputs.notify
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
           notifyTesters: true
           debug: false
