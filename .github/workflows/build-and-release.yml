@@ -103,7 +103,7 @@ jobs:
           releaseNotes: |
             ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
-          group: github.event.inputs.notify
+          group: ${{ github.event.inputs.notify }}
           file: app/build/outputs/apk/staging/app-staging-unsigned${{ github.event.inputs.tag }}.apk
           notifyTesters: true
           debug: false
