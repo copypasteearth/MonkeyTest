@@ -98,7 +98,7 @@ jobs:
         uses: wzieba/AppCenter-Github-Action@v1
         with:
           appName: copypasteearth/MonkeyTest
-          releaseNotes: |+
+          releaseNotes: |
             "Staging Build"
             ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
