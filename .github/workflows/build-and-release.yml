@@ -99,7 +99,6 @@ jobs:
         with:
           appName: copypasteearth/MonkeyTest
           releaseNotes: |
-            "Staging Build"
             ${{ steps.create-release-notes.outputs.release-notes }}
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: ${{ github.event.inputs.notify }}
