@@ -17,7 +17,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import jacs.apps.monkeytest.ui.theme.RapptrGithubActionsPlaygroundTheme
 import java.lang.NullPointerException
-
+/**
+ * A group of *members*.
+ *
+ * This class has no useful logic; it's just a documentation example.
+ *
+ * @constructor MainActivity3.
+ */
 class MainActivity3 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +41,10 @@ class MainActivity3 : ComponentActivity() {
     }
 }
 
+/**
+ *
+ * @param name name for the greeting2 function
+ */
 @Composable
 fun Greeting2(name: String) {
     var count = 15
