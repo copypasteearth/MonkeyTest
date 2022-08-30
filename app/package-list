@@ -1,24 +1,24 @@
-$dokka.format:gfm-v1
-$dokka.linkExtension:md
-$dokka.location:jacs.apps.monkeytest.ui.theme////PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/index.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Purple200/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple200.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Purple500/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple500.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Purple700/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple700.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//RapptrGithubActionsPlaygroundTheme/#kotlin.Boolean#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-rapptr-github-actions-playground-theme.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Shapes/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-shapes.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Teal200/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-teal200.md
-$dokka.location:jacs.apps.monkeytest.ui.theme//Typography/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-typography.md
-$dokka.location:jacs.apps.monkeytest////PointingToDeclaration/app/jacs.apps.monkeytest/index.md
-$dokka.location:jacs.apps.monkeytest//DefaultPreview/#/PointingToDeclaration/app/jacs.apps.monkeytest/-default-preview.md
-$dokka.location:jacs.apps.monkeytest//DefaultPreview2/#/PointingToDeclaration/app/jacs.apps.monkeytest/-default-preview2.md
-$dokka.location:jacs.apps.monkeytest//Greeting/#kotlin.String/PointingToDeclaration/app/jacs.apps.monkeytest/-greeting.md
-$dokka.location:jacs.apps.monkeytest//Greeting2/#kotlin.String/PointingToDeclaration/app/jacs.apps.monkeytest/-greeting2.md
-$dokka.location:jacs.apps.monkeytest/MainActivity///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity/index.md
-$dokka.location:jacs.apps.monkeytest/MainActivity/MainActivity/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity/-main-activity.md
-$dokka.location:jacs.apps.monkeytest/MainActivity2///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity2/index.md
-$dokka.location:jacs.apps.monkeytest/MainActivity2/MainActivity2/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity2/-main-activity2.md
-$dokka.location:jacs.apps.monkeytest/MainActivity3///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity3/index.md
-$dokka.location:jacs.apps.monkeytest/MainActivity3/MainActivity3/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity3/-main-activity3.md
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:jacs.apps.monkeytest.ui.theme////PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/index.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Purple200/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple200.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Purple500/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple500.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Purple700/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-purple700.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//RapptrGithubActionsPlaygroundTheme/#kotlin.Boolean#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-rapptr-github-actions-playground-theme.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Shapes/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-shapes.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Teal200/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-teal200.html
+$dokka.location:jacs.apps.monkeytest.ui.theme//Typography/#/PointingToDeclaration/app/jacs.apps.monkeytest.ui.theme/-typography.html
+$dokka.location:jacs.apps.monkeytest////PointingToDeclaration/app/jacs.apps.monkeytest/index.html
+$dokka.location:jacs.apps.monkeytest//DefaultPreview/#/PointingToDeclaration/app/jacs.apps.monkeytest/-default-preview.html
+$dokka.location:jacs.apps.monkeytest//DefaultPreview2/#/PointingToDeclaration/app/jacs.apps.monkeytest/-default-preview2.html
+$dokka.location:jacs.apps.monkeytest//Greeting/#kotlin.String/PointingToDeclaration/app/jacs.apps.monkeytest/-greeting.html
+$dokka.location:jacs.apps.monkeytest//Greeting2/#kotlin.String/PointingToDeclaration/app/jacs.apps.monkeytest/-greeting2.html
+$dokka.location:jacs.apps.monkeytest/MainActivity///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity/index.html
+$dokka.location:jacs.apps.monkeytest/MainActivity/MainActivity/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity/-main-activity.html
+$dokka.location:jacs.apps.monkeytest/MainActivity2///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity2/index.html
+$dokka.location:jacs.apps.monkeytest/MainActivity2/MainActivity2/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity2/-main-activity2.html
+$dokka.location:jacs.apps.monkeytest/MainActivity3///PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity3/index.html
+$dokka.location:jacs.apps.monkeytest/MainActivity3/MainActivity3/#/PointingToDeclaration/app/jacs.apps.monkeytest/-main-activity3/-main-activity3.html
 jacs.apps.monkeytest
 jacs.apps.monkeytest.ui.theme
 
